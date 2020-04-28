@@ -2,7 +2,7 @@
     <swiper>
       <swiper-item v-for="(item, key) in banners" :key="key">
         <a :href = "item.link">
-          <img :src="item.image" alt="">
+          <img :src="item.image" alt="" @load="imageLoad">
         </a>
       </swiper-item>
     </swiper>
@@ -15,13 +15,23 @@
       banners: {
         type: Array,
         default() {
-          return []
+          return {
+            isLoad: false
+          }
         }
       }
     },
     components: {
       Swiper,
       SwiperItem
+    },
+    methods: {
+      imageLoad() { // 将加载完轮播图的事件发送过去 方便我们监听商品分类的位置
+        if(!this.isLoad) {
+          this.$emit('swiperImageLoad')
+          this.isLoad = true
+        }
+      }
     }
   }
 </script>

@@ -24,10 +24,6 @@
     },
     computed: {
       isActive() {
-        // /home -> item1(/home) = true
-        // /home -> item1(/category) = false
-        // /home -> item1(/cart) = true
-        // /home -> item1(/profile) = true
         return this.$route.path.indexOf(this.path) !== -1
       },
       activeStyle() {
@@ -48,6 +44,7 @@
     text-align: center;
     height: 49px;
     font-size: 14px;
+    background-color: white;
   }
 
   .tab-bar-item img {

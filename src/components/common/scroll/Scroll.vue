@@ -45,18 +45,24 @@
                 //console.log(postion);
                 this.$emit('scroll', postion)
             })
-            
+
             // 3.监听上拉事件
             this.scroll.on('pullingUp', () => {
-                this.$emit('pullingUp')
+                this.$emit(' ')
             })
         },
         methods:{
             scrollTo(x, y, time=300) {
-                this.scroll.scrollTo(0, 0, time)
+                this.scroll && this.scroll.scrollTo(x, y, time)
             },
             finishPullUp() {
                 this.scroll.finishPullUp()
+            },
+            refresh() {
+              this.scroll.refresh();
+            },
+            getScrolly() {  // 判断移动位置
+              return this.scroll ? this.scroll.y : 0
             }
         }
     }
